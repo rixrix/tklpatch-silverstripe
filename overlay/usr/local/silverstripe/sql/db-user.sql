@@ -1,0 +1,1 @@
+CREATE USER 'ssdbuser'@'localhost' IDENTIFIED BY '#silverstripe_mysql_password#';
