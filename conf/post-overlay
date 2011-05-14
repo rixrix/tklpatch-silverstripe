@@ -25,7 +25,7 @@ hostname silverstripe
 # Silverstripe pre-configured MySQL database
 # Notes: 
 ################################################################################
-cd /usr/local/silverstripe/
+cd /usr/local/silverstripe/sql/
 mysqladmin -h 127.0.0.1 -uroot --password=adminpass CREATE silverstripe
 mysql -h 127.0.0.1 -uroot --password=adminpass silverstripe < silverstripe245.sql
 echo "CREATE USER 'ssdbuser'@'localhost' IDENTIFIED BY 'ssdbuserpass'" | mysql -h 127.0.0.1 -uroot --password=adminpass
@@ -46,7 +46,7 @@ tar -zxvf SilverStripe-v2.4.5.tar.gz
 rm -f SilverStripe-v2.4.5/install.php
 cp -frv SilverStripe-v2.4.5/* /var/www/silverstripe/
 cp -frv SilverStripe-v2.4.5/.htaccess /var/www/silverstripe/
-cp -frv _config.php /var/www/silverstripe/mysite/
+cp -frv config/_config.php /var/www/silverstripe/mysite/
 
 ################################################################################
 # Stop services
