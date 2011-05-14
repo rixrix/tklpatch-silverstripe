@@ -1,0 +1,20 @@
+#!/bin/bash -e
+
+#Create a password dialog box; store the output in /tmp/silverstripe_pass
+dialog --title "Set Silverstripe Database Password" \
+    --passwordbox Password 10 40 \
+    2> /tmp/silverstripe_pass
+
+if [ $? = 0 ]; then
+    SILVERSTRIPE_DB_PASS=`cat /tmp/silverstripe`
+    cat /usr/local/silverstripe/sql/db-user.sql | sed "s|#silverstripe_mysql_password#|$SILVERSTRIPE_DB_PASS|" > /usr/local/silverstripe/sql/db-user.new.sql
+    sed -i "s|#silverstripe_mysql_password#|$SILVERSTRIPE_DB_PASS|" /var/www/silverstripe/mysite/_config.php
+    mysql -u root < /usr/local/silverstripe/sql/db-silverstripe.sql
+    mysql -u root < /usr/local/silverstripe/sql/db-user.new.sql
+    mysql -u root < /usr/local/silverstripe/sql/db-permissions.sql
+    mysql -u root < /usr/local/silverstripe/sql/silverstripe245.sql
+    #rm /tmp/silverstripe
+    #rm /usr/local/silverstripe/sql/db-user.new.sql
+else
+    echo "Silverstripe database password not set. The must be done manually."
+fi
