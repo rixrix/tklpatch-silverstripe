@@ -1,6 +1,11 @@
 #!/bin/bash -e
+# Based on Psiphon TKLPatch
 
-#Create a password dialog box; store the output in /tmp/silverstripe_db_pass
+################################################################################
+# Prompt a password dialog box
+# store the output in /tmp/silverstripe_db_pass
+################################################################################
+
 dialog --title "Set Silverstripe DB Password" \
     --passwordbox Password 10 50 \
     2> /tmp/silverstripe_db_pass
@@ -21,5 +26,5 @@ if [ $? = 0 ]; then
     rm /usr/local/silverstripe/sql/db-user.new.sql
 else
 	# dump to a log file
-    echo "Silverstripe database password not set. The must be done manually." > /var/log/silverstripe.firstboot.log
+    echo "Silverstripe database password not set. This must be done manually." > /var/log/silverstripe.firstboot.log
 fi
