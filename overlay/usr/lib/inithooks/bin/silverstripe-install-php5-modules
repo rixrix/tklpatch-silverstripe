@@ -1,0 +1,19 @@
+#!/bin/bash -e
+
+SILVERSTRIPE_TOOLS=/usr/local/silverstripe/tools
+source $SILVERSTRIPE_TOOLS/functions
+
+################################################################################
+# Install PHP5 modules/libraries
+################################################################################
+apt-get update
+
+PHP5_CLI=`dpkg --get-selections | grep php5-cli | wc -l`
+if [ $PHP5_CLI -eq 0 ]; then
+	install php5-cli 
+fi
+
+PHP5_GD=`dpkg --get-selections | grep php5-gd | wc -l`
+if [ $PHP5_GD -eq 0 ]; then
+	install php5-gd 
+fi

@@ -1,0 +1,9 @@
+#!/bin/bash -e
+
+################################################################################
+# Install PHP5 modules/libraries
+################################################################################
+. /etc/default/inithooks
+
+[ -e $INITHOOKS_CONF ] && . $INITHOOKS_CONF
+$INITHOOKS_PATH/bin/silverstripe-install-php5-modules
