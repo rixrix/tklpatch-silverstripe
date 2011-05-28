@@ -43,7 +43,7 @@ Todo
 * Configure Cron
 * More documentation and testing
 * Configure CMS admin user & password on first boot 
-* Install PEAR, PHP5-GD, PHP5-CLI on first boot
+* Install needed libraries/modules on first boot
 * TBA 
 
 License
